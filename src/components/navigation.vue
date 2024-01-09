@@ -24,9 +24,9 @@ export default {
   data() {
     return {
       headerMenu: {
-        "Domov": "/",
+        "Home": "/",
         "SoC": "/soc",
-        "Kontakt": "/kontakt",
+        "Compare SoCs": "/compare",
         "Prihlasiť sa": "/login",
         "Logout": "/logout",
       },

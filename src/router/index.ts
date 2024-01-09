@@ -13,6 +13,11 @@ const router = createRouter({
       name: 'soc',
       component: () => import('../views/SocView.vue')
     },
+    {
+      path: '/compare',
+      name: 'compare',
+      component: () => import('../views/SocCompareView.vue')
+    },
   ],
   scrollBehavior (to, from, savedPosition) {
     return new Promise((resolve, reject) => {
