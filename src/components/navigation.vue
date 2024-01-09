@@ -25,7 +25,7 @@ export default {
     return {
       headerMenu: {
         "Domov": "/",
-        "SoC": "/specs",
+        "SoC": "/soc",
         "Kontakt": "/kontakt",
         "Prihlasiť sa": "/login",
         "Logout": "/logout",

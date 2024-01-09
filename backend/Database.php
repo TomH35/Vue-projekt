@@ -1,4 +1,8 @@
 <?php
+header("Access-Control-Allow-Origin: http://localhost:5173");
+header('Access-Control-Allow-Methods: GET, POST');
+header('Access-Control-Allow-Headers: Content-Type');
+
 class Database {
     private $host;
     private $port;
@@ -31,7 +35,7 @@ class Database {
 }
 
 function connect_to_database() {
-    $database = new Database('127.0.0.1', 3307,'root', '', 'soc_db');
+    $database = new Database('127.0.0.1', 3307,'root', '', 'socdb');
     $connection = $database->connect();
     
     return $connection;

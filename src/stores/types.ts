@@ -2,7 +2,7 @@
 export interface SoC {
   id_soc: number;
   id_soc_clanok: number;
-  soc_obrazok: string | null;
+  soc_obrazok: string;
   soc_nazov: string;
   soc_jadra: string;
   soc_pocet_jadier: string;
@@ -53,10 +53,10 @@ export interface SoC {
 
 
 export interface SoCClanok {
-    soc_id_clanku: number;
-    clanok_nadpis: string;
-    clanok_text: string;
-    clanok_image: string | null;
+    id_soc: number;
+    nadpis: string;
+    text: string;
+    clanok_obrazok: string;
   }
   
   
@@ -64,7 +64,7 @@ export interface SoCClanok {
     {
       id_soc: 0,
       id_soc_clanok: 0,
-      soc_obrazok: null,
+      soc_obrazok: '',
       soc_nazov: '',
       soc_jadra: '',
       soc_pocet_jadier: '',

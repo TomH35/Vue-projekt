@@ -1,22 +1,30 @@
 import { createRouter, createWebHistory } from 'vue-router'
-import SpecsView from '../views/SpecsView.vue'
-import SocView from '../views/SocView.vue'
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
   routes: [
     {
-      path: '/specs',
+      path: '/specs/:soc_id_clanku', // Add dynamic segment
       name: 'specs',
-      component: SpecsView
+      component: () => import('../views/SpecsView.vue')
     },
     {
       path: '/soc',
       name: 'soc',
-      component: SocView
+      component: () => import('../views/SocView.vue')
     },
-  ]
+  ],
+  scrollBehavior (to, from, savedPosition) {
+    return new Promise((resolve, reject) => {
+      setTimeout(() => {
+        resolve({ left: 0, top: 0 })
+      }, 10)
+    })
+  }
+    
 })
 
 export default router
+
+
 

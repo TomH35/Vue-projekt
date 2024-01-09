@@ -1,15 +1,17 @@
 <!-- Add your Vue.js script tag and other dependencies here -->
 
 <template>
-    <div>
+
+    <div class="container mt-5">
       <div class="row custom-margin-left-image mb-5">
-        <div class="col-sm-3">
-          <img :src="'data:image/jpeg;base64,' + base64Encode(soc_clanok[0].soc_obrazok)" alt="SoC image" class="custom-img-size">
+        <div class="col-sm-3 mt-5">
+          <img :src="soc_clanok[0].soc_obrazok" alt="SoC image" class="custom-img-size">
         </div>
-        <div class="col-sm-9">
+        <div class="col-sm-9 mt-5">
           <h2 class="custom-margin-left-title">{{ soc_clanok[0].soc_nazov }}</h2>
         </div>
       </div>
+
   
       <!-- CPU Section -->
     <div class="row">
@@ -229,10 +231,45 @@
               </h2>
               <div id="panelsStayOpen-collapseOne" class="accordion-collapse collapse show" aria-labelledby="panelsStayOpen-headingOne">
                 <div class="accordion-body">
-                  <!-- Add your AnTuTu Benchmark details here -->
-                </div>
-              </div>
-            </div>
+                  <table class="table">
+          <tbody>
+            <tr>
+              <th scope="row"><strong>Zariadenie</strong></th>
+              <td>{{soc_clanok[0].soc_antutu_zariadenie}}</td>
+          </tr>
+
+          <tr>
+              <th scope="row"><strong>CPU</strong></th>
+              <td>{{soc_clanok[0].soc_antutu_cpu}}</td> 
+             
+          </tr>
+          <tr>
+              <th scope="row"><strong>GPU</strong></th>
+              <td>{{soc_clanok[0].soc_antutu_gpu}}</td>
+          
+          </tr>
+          <tr>
+              <th scope="row"><strong>MEM</strong></th>
+              <td>{{soc_clanok[0].soc_antutu_mem}}</td>
+             
+          </tr>
+          <tr>
+            <th scope="row"><strong>UX</strong></th>
+            <td>{{soc_clanok[0].soc_antutu_ux}}</td>
+           
+        </tr>
+          <tr>
+            <th scope="row"><strong>Výsledné skóre</strong></th>
+            <td>{{soc_clanok[0].soc_antutu_vs}}</td>
+        </tr>
+       
+      
+      </tbody>
+
+      </table>
+      </div>
+    </div>
+  </div>
             <!-- 3D Mark -->
             <div class="accordion-item">
               <h2 class="accordion-header" id="panelsStayOpen-headingTwo">
@@ -242,7 +279,25 @@
               </h2>
               <div id="panelsStayOpen-collapseTwo" class="accordion-collapse collapse" aria-labelledby="panelsStayOpen-headingTwo">
                 <div class="accordion-body">
-                  <!-- Add your 3D Mark details here -->
+                  <table class="table">
+          <tbody>
+            <tr>
+              <th scope="row"><strong>Zariadenie</strong></th>
+              <td>{{soc_clanok[0].soc_mark_zariadenie}}</td> 
+          </tr>
+          <tr>
+            <th scope="row"><strong>Benchmark</strong></th>
+            <td>{{soc_clanok[0].soc_mark_benchmark}}</td> 
+        </tr>
+
+          <tr>
+              <th scope="row"><strong>Skóre</strong></th>
+              <td>{{soc_clanok[0].soc_mark_skore}}</td> 
+          </tr>
+             
+      </tbody>
+
+      </table>
                 </div>
               </div>
             </div>
@@ -287,40 +342,51 @@
   </template>
   
   <script lang="ts">
-  import { defineComponent, computed } from 'vue';
+  import { computed } from 'vue';
   import { useAppStore } from '../stores/store'; // Import your store
-  import { useRoute } from 'vue-router'; // Import useRoute from vue-router
   
-  export default defineComponent({
-    setup() {
-      const store = useAppStore(); // Use your store
-      const route = useRoute(); // Use the route
-  
-      // Get the soc_id_clanku from the route params
-      const socId = Number(route.params.soc_id_clanku);
-  
+  export default {
+    name: 'SpecsView', // Replace with your actual component name
+    data() {
       return {
-        allSoCs: store.allSoCs,
-        soc_clanok: computed(() => {
-          // Filter the desired SoC from allSoCs based on soc_id_clanku
-          return store.allSoCs.filter(soc => soc.id_soc_clanok === socId);
-        }),
+        socId: 0,
       };
     },
-    methods: {
-      base64Encode(data: any) {
-        // Add your base64 encoding logic here
+    computed: {
+      allSoCs() {
+        const store = useAppStore();
+        console.log('allSoCs:', store.allSoCs); // Log allSoCs
+        return store.allSoCs;
       },
-      goBack() {
-        // Add your go back logic here
+      soc_clanok() {
+        const store = useAppStore();
+        const soc_clanok = store.allSoCs.filter(soc => soc.id_soc_clanok === this.socId);
+        console.log('soc_clanok:', soc_clanok); // Log soc_clanok
+        return soc_clanok;
       },
     },
-  });
+    created() {
+  const store = useAppStore();
+  console.log('allSoCClanok:', store.allSoCClanok);
+  console.log('allSoCs:', this.allSoCs); // Log allSoCs
+
+  // Get the soc_id_clanku from the route params
+  this.socId = Number(this.$route.params.soc_id_clanku);
+  console.log('socId:', this.socId); // Log socId
+},
+
+    methods: {
+      goBack() {
+        // Navigate back to /soc
+        this.$router.push('/soc');
+      },
+    },
+  };
   </script>
   
-  <style scoped>
-  /* Add your styling here */
-  </style>
+  
+  
+  
   
   
   
