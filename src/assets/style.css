@@ -53,13 +53,13 @@
     background-color: #f8f5f2;
 
 }
-.custom-button-color{
-    background-color:#000b29;
-    color: #f8f5f2;
+.custom-button-color {
+    background-color: #000b29 !important;
+    color: #f8f5f2 !important;
 }
 .custom-button-color:hover{
-    background-color: #edb83d;
-    color: #f8f5f2;
+    background-color: #edb83d !important;
+    color: #f8f5f2 !important;
 }
 .custom-link-style{
     text-decoration: none;

@@ -1,8 +1,8 @@
 <template>
   <nav class="navbar navbar-expand-sm navbar-dark fixed-top custom-background">
     <div class="container-fluid">
-      <a class="navbar-brand" href="index.php">
-        <img src="..\img\cpu-gc253e2714_1280.png" alt="logo" width="28" height="28" class="d-inline-block align-text-top">
+      <a class="navbar-brand" href="#">
+        <img src="\img\cpu-gc253e2714_1280.png" alt="logo" width="28" height="28" class="d-inline-block align-text-top">
         <span class="custom-navbar-top-color">SoCInfo</span>
       </a>
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
