@@ -20,17 +20,15 @@ class Database {
     }
 
     public function connect() {
-        $this->conn = new mysqli($this->host, $this->user, $this->password, $this->database, $this->port);
-
-        if ($this->conn->connect_error) {
-            die("Connection failed: " . $this->conn->connect_error);
-        }
+        $dsn = "mysql:host=$this->host;port=$this->port;dbname=$this->database";
+        $this->conn = new PDO($dsn, $this->user, $this->password);
+        $this->conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
         return $this->conn;
     }
 
     public function close() {
-        $this->conn->close();
+        $this->conn = null;
     }
 }
 
@@ -41,9 +39,7 @@ function connect_to_database() {
     return $connection;
 }
 
-
 function close_database_connection($connection) {
-    $connection->close();
+    $connection = null;
 }
-
 ?>

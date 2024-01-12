@@ -12,10 +12,8 @@ function getSoCClanokData() {
     $stmt = $conn->prepare($query);
     $stmt->execute();
 
-    $result = $stmt->get_result();
-    $results = $result->fetch_all(MYSQLI_ASSOC);
+    $results = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
-    $stmt->close();
     close_database_connection($conn);
 
     header('Content-Type: application/json');
