@@ -39,6 +39,27 @@ export const useAppStore = defineStore({
         console.error('Error fetching data:', error);
       }
     },
+    async addAndPostSoC(soc: SoC) {
+      this.allSoCs.push(soc);
+      await this.postData('/backend/SoCInsertData.php', soc);
+    },
+    async addAndPostSoCClanok(clanok: SoCClanok) {
+      this.allSoCClanok.push(clanok);
+      await this.postData('/backend/SoCClanokInsertData.php', clanok);
+    },
+    async postData(endpoint: string, data: SoC | SoCClanok) {
+      const response = await fetch(endpoint, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(data)
+      });
+      if (!response.ok) {
+        throw new Error('Failed to post data');
+      }
+    }
   },
 });
+
 

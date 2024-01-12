@@ -18,6 +18,16 @@ const router = createRouter({
       name: 'compare',
       component: () => import('../views/SocCompareView.vue')
     },
+    {
+      path: '/adminPanel',
+      name: 'adminPanel',
+      component: () => import('../views/AdminView.vue')
+    },
+    {
+      path: '/adminPridavanie',
+      name: 'adminPridavanie',
+      component: () => import('../views/PridavanieView.vue')
+    },
   ],
   scrollBehavior (to, from, savedPosition) {
     return new Promise((resolve, reject) => {
