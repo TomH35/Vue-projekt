@@ -63,6 +63,9 @@ export interface SoCClanok {
     isLoggedIn: boolean;
     errorMessage: string;
   }
+  export interface DeletePayload {
+    id_soc: number;
+  }
   
   
   export const socList: SoC[] = [

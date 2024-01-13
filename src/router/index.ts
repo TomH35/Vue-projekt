@@ -1,11 +1,17 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import { useAdminStore } from '../stores/adminLogin';
+import HomeView from '../views/HomeView.vue'
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
   routes: [
     {
-      path: '/specs/:soc_id_clanku', // Add dynamic segment
+      path: '/',
+      name: 'Home',
+      component: HomeView
+    },
+    {
+      path: '/specs/:soc_id_clanku',
       name: 'specs',
       component: () => import('../views/SpecsView.vue')
     },
@@ -28,14 +34,25 @@ const router = createRouter({
       }
     },
     {
-      path: '/adminPridavanie',
-      name: 'adminPridavanie',
-      component: () => import('../views/PridavanieView.vue')
+      path: '/adminCreate',
+      name: 'adminCreate',
+      component: () => import('../views/CreateView.vue'),
+      meta: {
+        requiresAuth: true
+      }
     },
     {
       path: '/adminLogin',
       name: 'adminLogin',
       component: () => import('../views/AdminLoginView.vue')
+    },
+    {
+      path: '/adminDelete',
+      name: 'adminDelete',
+      component: () => import('../views/DeleteView.vue'),
+      meta: {
+        requiresAuth: true
+      }
     },
   ],
   scrollBehavior (to, from, savedPosition) {

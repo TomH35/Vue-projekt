@@ -1,6 +1,6 @@
 // store.ts
 import { defineStore } from 'pinia';
-import type { SoC, SoCClanok } from '../stores/types'; // Import SoCClanok type if it's defined
+import type { SoC, SoCClanok, DeletePayload } from '../stores/types'; // Import SoCClanok type if it's defined
 
 interface AppState {
   selectedSoC: SoC | null;
@@ -47,7 +47,12 @@ export const useAppStore = defineStore({
       this.allSoCClanok.push(clanok);
       await this.postData('/backend/SoCClanokInsertData.php', clanok);
     },
-    async postData(endpoint: string, data: SoC | SoCClanok) {
+    async deleteArticle(id_soc: number) {
+      this.allSoCs = this.allSoCs.filter(soc => soc.id_soc !== id_soc);
+      this.allSoCClanok = this.allSoCClanok.filter(clanok => clanok.id_soc !== id_soc);
+      await this.postData('/backend/SoCDeleteData.php', { id_soc });
+    },
+    async postData(endpoint: string, data: SoC | SoCClanok | DeletePayload) {
       const response = await fetch(endpoint, {
         method: 'POST',
         headers: {
