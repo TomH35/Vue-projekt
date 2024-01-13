@@ -11,7 +11,7 @@
       <div class="card-body">
         <h5 class="card-title">Pridať alebo upraviť článok</h5>
         <p class="card-text"></p>
-        <router-link :to="{ name: 'adminPridavanie' }" class="nav-link">
+        <router-link :to="{ name: 'adminCreate' }" class="nav-link">
             <span class="btn custom-button-color custom-button-margin">Pridavanie</span>
         </router-link>
       </div>
@@ -29,7 +29,9 @@
         <div class="card-body">
           <h5 class="card-title">Zmazať článok</h5>
           <p class="card-text"></p>
-          <a href="admin_mazanie.php" class="btn custom-button-color custom-button-margin">Zmazať článok</a>
+          <router-link :to="{ name: 'adminDelete' }" class="nav-link">
+            <span class="btn custom-button-color custom-button-margin">Mazanie</span>
+          </router-link>
         </div>
       </div>
     </div>

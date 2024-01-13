@@ -336,7 +336,7 @@
   </div>
   
       <div class="container text-center mt-3 mb-3">
-        <button @click="goBack" class="btn custom-button-color mt-5">Späť</button>
+        <button @click="goBack" class="btn custom-button-color mt-5">Back</button>
       </div>
     </div>
   </template>

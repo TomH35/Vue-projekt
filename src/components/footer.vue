@@ -24,7 +24,7 @@
         footerMenu: {
           "SoC": "/soc",
           "Compare SoCs": "/compare",
-          "Prihlasiť sa": "/adminLogin",
+          "Login": "/adminLogin",
         },
       };
     },
