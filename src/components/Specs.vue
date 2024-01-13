@@ -1,9 +1,5 @@
 <template>
     <div>
-      <!-- Add a search bar here 
-      <div class="container mt-5 ms-5 mb-5">
-      <input v-model="search" class="mt-5 ms-4" placeholder="Search for an SoC..." />
-    </div>-->
     <div class="container mt-5 ms-5 mb-5">
     <input v-model="search" class="mt-5 ms-4" placeholder="Search for an SoC..." />
     <div v-if="search" class="suggestions">
@@ -17,13 +13,13 @@
     </div>
   </div>
       
-        <div v-if="selectedSoc" class="container mt-5">
+        <div v-if="selectedSoc" class="container mt-5 mb-5">
       <div class="row custom-margin-left-image mb-5 ms-4">
-        <div class="col-sm-3 mt-5 me-5 ms-5">
+        <div class="col-sm-5 mt-5 me-5 ms-4">
           <img :src="selectedSoc.soc_obrazok" alt="SoC image" class="custom-img-size">
         </div>
-        <div class="col-sm-5 mt-5 ms-5">
-          <h4 class="custom-margin-left-title">{{ selectedSoc.soc_nazov }}</h4>
+        <div class="col-sm-3 mt-5 ms-5">
+          <h6 class="custom-margin-left-title"><strong>{{ selectedSoc.soc_nazov }}</strong></h6>
         </div>
       </div>
 

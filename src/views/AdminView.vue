@@ -39,9 +39,29 @@
 </div>
 </div>
 </div>
-<div class="container d-flex justify-content-center mt-3 mb-3">
-  <a href="/" class = "btn custom-button-color">Logout</a>
+<div class="container d-flex justify-content-center mt-3 mb-5">
+    <button @click="handleLogout" class="btn custom-button-color">Logout</button>
 </div>
 
 </template>
+<script lang="ts">
+import { useAdminStore } from '../stores/adminLogin';
+import { useRouter } from 'vue-router';
+
+export default {
+  name: 'adminPanel',
+  data() {
+    return {
+      user: useAdminStore(),
+      router: useRouter()
+    }
+  },
+  methods: {
+    handleLogout() {
+      this.user.logout();
+      this.router.push({ name: 'adminLogin' });
+    }
+  }
+}
+</script>
 

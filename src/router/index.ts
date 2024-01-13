@@ -1,4 +1,5 @@
 import { createRouter, createWebHistory } from 'vue-router'
+import { useAdminStore } from '../stores/adminLogin';
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -21,12 +22,20 @@ const router = createRouter({
     {
       path: '/adminPanel',
       name: 'adminPanel',
-      component: () => import('../views/AdminView.vue')
+      component: () => import('../views/AdminView.vue'),
+      meta: {
+        requiresAuth: true
+      }
     },
     {
       path: '/adminPridavanie',
       name: 'adminPridavanie',
       component: () => import('../views/PridavanieView.vue')
+    },
+    {
+      path: '/adminLogin',
+      name: 'adminLogin',
+      component: () => import('../views/AdminLoginView.vue')
     },
   ],
   scrollBehavior (to, from, savedPosition) {
@@ -36,10 +45,20 @@ const router = createRouter({
       }, 10)
     })
   }
-    
+})
+
+router.beforeEach((to, from, next) => {
+  const user = useAdminStore();
+
+  if (to.matched.some(record => record.meta.requiresAuth) && !user.isLoggedIn) {
+    next({ name: 'adminLogin' });
+  } else {
+    next();
+  }
 })
 
 export default router
+
 
 
 

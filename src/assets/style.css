@@ -70,7 +70,7 @@
     color: #edb83d;
 }
 .custom-list-style{
-    list-style:circle;
+    list-style:circle !important;
 }
 .custom-link-style-zdroj{
     text-decoration: none;

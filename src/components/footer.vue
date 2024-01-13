@@ -8,7 +8,7 @@
           <div class="col-sm-6">
             <ul class="custom-list-style">
               <li v-for="(url, page) in footerMenu" :key="page">
-                <a :href="url">{{ page }}</a>
+                  <router-link :to="url">{{ page }}</router-link>
               </li>
             </ul>
           </div>
@@ -22,9 +22,9 @@
     data() {
       return {
         footerMenu: {
-          "SoC": "SoC.php",
-          "Kontakt": "Kontakt.php",
-          "Prihlasiť sa": "login.php",
+          "SoC": "/soc",
+          "Compare SoCs": "/compare",
+          "Prihlasiť sa": "/adminLogin",
         },
       };
     },

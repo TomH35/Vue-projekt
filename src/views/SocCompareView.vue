@@ -1,7 +1,13 @@
 <template>
-  <div class="specs-container">
-    <Specs />
-    <Specs />
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-6">
+        <Specs />
+      </div>
+      <div class="col-sm-6">
+        <Specs />
+      </div>
+  </div>
   </div>
 </template>
   

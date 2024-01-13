@@ -27,8 +27,7 @@ export default {
         "Home": "/",
         "SoC": "/soc",
         "Compare SoCs": "/compare",
-        "Prihlasiť sa": "/login",
-        "Logout": "/logout",
+        "Prihlasiť sa": "/adminLogin",
       },
     };
   },

@@ -58,6 +58,11 @@ export interface SoCClanok {
     text: string;
     clanok_obrazok: string;
   }
+
+  export interface State {
+    isLoggedIn: boolean;
+    errorMessage: string;
+  }
   
   
   export const socList: SoC[] = [

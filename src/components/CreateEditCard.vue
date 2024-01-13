@@ -15,6 +15,13 @@
                 <div class="valid-feedback">
                 </div>
               </div>
+
+              <div>
+                <label for="nadpis" class="form-label">ID</label>
+                <input type="number" name="nadpis" class="form-control" maxlength="45" id="nadpis" v-model.number="clanok.id_soc" required>
+                <div class="valid-feedback">
+                </div>
+              </div>
     
               <div class="mt-3">
                 <label for="text">Text článku</label>
@@ -181,9 +188,9 @@ export default {
     },
   },
   watch: {
-  'soc.id_soc_clanok': function(newVal) {
+  'clanok.id_soc': function(newVal) {
     this.soc.id_soc = newVal;
-    this.clanok.id_soc = newVal;
+    this.soc.id_soc_clanok = newVal;
   }
 },
 };
