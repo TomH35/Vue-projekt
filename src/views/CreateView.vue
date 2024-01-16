@@ -1,12 +1,12 @@
 <template>
-  <CreateEditCard />
+  <CreateCard />
 </template>
 <script lang="ts">
-import CreateEditCard from '../components/CreateEditCard.vue';
+import CreateCard from '../components/CreateCard.vue';
   
   export default {
     components: {
-      CreateEditCard,
+      CreateCard,
     },
   };
 </script>

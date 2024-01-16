@@ -40,11 +40,9 @@
               <h2 class="text-center card-title mt-3"><strong>Údaje o SoC</strong></h2>
 
               <div>
-                <!-- Loop through properties of soc object -->
                 <div v-for="(value, key) in soc" :key="key" class="mt-3">
-                <!-- Use v-model binding based on the property name -->
                 <label :for="key" class="form-label">{{ labelMappings[key] || key }}</label>
-                <input v-model="soc[key]" type="text" :name="key" class="form-control" maxlength="45" :id="key">
+                <input v-model="soc[key]" type="text" :name="key" class="form-control" maxlength="255" :id="key">
                 <div class="valid-feedback"></div>
                 </div>
               </div>
@@ -65,12 +63,12 @@
     </template>
 <script lang="ts">
 import { ref } from 'vue';
-import { useAppStore } from '../stores/store'; // import your store
+import { useAppStore } from '../stores/store';
 
 export default {
   data() {
     return {
-    soc: { // initialize your soc data with default values
+    soc: {
       id_soc: 0,
       id_soc_clanok: 0,
       soc_obrazok: '',
@@ -172,7 +170,7 @@ export default {
       soc_geekbench_scs: 'Geekbench single core skóre',
       soc_geekbench_mcs: 'Geekbench multi core skóre',
       },
-      clanok: { // initialize your clanok data with default values
+      clanok: {
         id_soc: 0,
         nadpis: '',
         text: '',
@@ -182,7 +180,7 @@ export default {
   },
   methods: {
     async onSubmit() {
-      const appStore = useAppStore(); // use your store
+      const appStore = useAppStore();
       await appStore.addAndPostSoC(this.soc);
       await appStore.addAndPostSoCClanok(this.clanok);
     },

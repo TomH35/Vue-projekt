@@ -20,9 +20,3 @@
     },
   };
   </script>
-  <style scoped>
-  .specs-container {
-    display: flex;
-    justify-content: space-between;
-  }
-  </style>

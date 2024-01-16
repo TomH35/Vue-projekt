@@ -1,5 +1,3 @@
-<!-- Add your Vue.js script tag and other dependencies here -->
-
 <template>
 
     <div class="container mt-5">
@@ -34,11 +32,11 @@
                 <td>{{ soc_clanok[0].soc_instrukcna_sada }}</td>
               </tr>
               <tr>
-                <th scope="row"><strong>Vyrovnávacia pamäť L2</strong></th>
+                <th scope="row"><strong>L2 Cache</strong></th>
                 <td>{{ soc_clanok[0].soc_l2 }}</td>
               </tr>
               <tr>
-                <th scope="row"><strong>Vyrovnávacia pamäť L3</strong></th>
+                <th scope="row"><strong>L3 Cache</strong></th>
                 <td>{{ soc_clanok[0].soc_l3 }}</td>
               </tr>
               <tr>
@@ -343,10 +341,10 @@
   
   <script lang="ts">
   import { computed } from 'vue';
-  import { useAppStore } from '../stores/store'; // Import your store
+  import { useAppStore } from '../stores/store';
   
   export default {
-    name: 'SpecsView', // Replace with your actual component name
+    name: 'SpecsView',
     data() {
       return {
         socId: 0,
@@ -355,29 +353,27 @@
     computed: {
       allSoCs() {
         const store = useAppStore();
-        console.log('allSoCs:', store.allSoCs); // Log allSoCs
+        console.log('allSoCs:', store.allSoCs);
         return store.allSoCs;
       },
       soc_clanok() {
         const store = useAppStore();
         const soc_clanok = store.allSoCs.filter(soc => soc.id_soc_clanok === this.socId);
-        console.log('soc_clanok:', soc_clanok); // Log soc_clanok
+        console.log('soc_clanok:', soc_clanok);
         return soc_clanok;
       },
     },
     created() {
   const store = useAppStore();
   console.log('allSoCClanok:', store.allSoCClanok);
-  console.log('allSoCs:', this.allSoCs); // Log allSoCs
+  console.log('allSoCs:', this.allSoCs);
 
-  // Get the soc_id_clanku from the route params
   this.socId = Number(this.$route.params.soc_id_clanku);
-  console.log('socId:', this.socId); // Log socId
+  console.log('socId:', this.socId);
 },
 
     methods: {
       goBack() {
-        // Navigate back to /soc
         this.$router.push('/soc');
       },
     },

@@ -1,11 +1,11 @@
 // store.ts
 import { defineStore } from 'pinia';
-import type { SoC, SoCClanok, DeletePayload } from '../stores/types'; // Import SoCClanok type if it's defined
+import type { SoC, SoCClanok, DeletePayload } from '../stores/types';
 
 interface AppState {
   selectedSoC: SoC | null;
   allSoCs: SoC[];
-  allSoCClanok: SoCClanok[]; // Add state property for SoCClanok[]
+  allSoCClanok: SoCClanok[];
 }
 
 export const useAppStore = defineStore({
@@ -13,7 +13,7 @@ export const useAppStore = defineStore({
   state: (): AppState => ({
     selectedSoC: null,
     allSoCs: [],
-    allSoCClanok: [], // Initialize state property for SoCClanok[]
+    allSoCClanok: [],
   }),
   actions: {
     setSelectedSoC(selectedSoC: SoC): void {
@@ -29,9 +29,9 @@ export const useAppStore = defineStore({
         console.error('Error fetching data:', error);
       }
     },
-    async fetchAllSoCClanok(): Promise<void> { // Add fetch function for SoCClanok[]
+    async fetchAllSoCClanok(): Promise<void> {
       try {
-        const response = await fetch('/backend/SoCClanokData.php'); // Replace with your actual API endpoint
+        const response = await fetch('/backend/SoCClanokData.php');
         console.log(response);
         const data = await response.json();
         this.allSoCClanok = data;

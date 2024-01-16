@@ -44,11 +44,11 @@
                 <td>{{ selectedSoc.soc_instrukcna_sada }}</td>
               </tr>
               <tr>
-                <th scope="row"><strong>Vyrovnávacia pamäť L2</strong></th>
+                <th scope="row"><strong>L2 Cache</strong></th>
                 <td>{{ selectedSoc.soc_l2 }}</td>
               </tr>
               <tr>
-                <th scope="row"><strong>Vyrovnávacia pamäť L3</strong></th>
+                <th scope="row"><strong>L3 Cache</strong></th>
                 <td>{{ selectedSoc.soc_l3 }}</td>
               </tr>
               <tr>
@@ -384,7 +384,6 @@
   
   <style scoped>
   .suggestions {
-    /* Add your styles for the dropdown list here */
     background-color: #fff;
     border: 1px solid #ccc;
   }
