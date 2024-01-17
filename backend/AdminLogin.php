@@ -22,13 +22,13 @@ function AdminLogin(){
 
     close_database_connection($conn);
 
-    if ($password === $row['a_password']) {
+    if ($row !== false && $password === $row['a_password']) {
         echo json_encode(['success' => true]);
     } else {
         echo json_encode(['success' => false, 'message' => 'Invalid username or password']);
     }
-
 }
 
 AdminLogin();
 ?>
+
